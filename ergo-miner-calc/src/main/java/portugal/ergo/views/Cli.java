@@ -1,6 +1,7 @@
 package portugal.ergo.views;
-
 import portugal.ergo.tools.*;
+
+import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.time.ZoneId;
 import java.util.Scanner;
@@ -35,14 +36,25 @@ public class Cli {
         System.out.println("    Let's begin!");
         System.out.println("--------------------------------------------------");
 
-        // Make API Calls
-        double currentPrice = Apis.apiCallPrice();
-        String[] currentNetwork = Apis.apiCallNetwork();
-
-        if (currentPrice != 0.00 && currentNetwork[2] != null){
-            System.out.println("API/s connected successfully.");
+        // Define APIs to connect
+        URL apiPrice = null;
+        URL apiNetwork = null;
+        try {
+            apiPrice = new URL("https://api.tokenjay.app/tokens/prices/03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04");
+            apiNetwork = new URL("https://whattomine.com/coins/340.json");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        else {
+        // Make API Calls
+        double currentPrice = (Long) Apis.makeApiCall("TokenJayApp", apiPrice).get("price") / 100_000_000.00;
+        String[] currentNetwork = new String[] { Apis.makeApiCall("WhatToMine", apiNetwork).get("nethash").toString(),
+                                                 Apis.makeApiCall("WhatToMine", apiNetwork).get("block_reward").toString(),
+                                                 Apis.makeApiCall("WhatToMine", apiNetwork).get("block_time").toString(),};
+
+
+        if (currentPrice != 0.00 && currentNetwork[2] != null) {
+            System.out.println("API/s connected successfully.");
+        } else {
             System.out.println("API/s failed to connect.");
         }
 
@@ -119,29 +131,34 @@ public class Cli {
                     | _| `.__\\_|_______|_______/    \\______/  |_______| |__|   |_______/   \s
                     """;
 
+            double farmRevenue =  Functions.dailyReturns(networkBlockRewards, ergoPrice, networkHashrate, userHashrate, networkBlockTime);
+            double farmCost = Functions.dailyCost(userWattsHour, userHours, userPriceKwHour);
+            double farmProfit = farmRevenue - farmCost;
+            double farmMined = Functions.minedReturnsErg(networkBlockRewards, userHashrate, networkHashrate, networkBlockTime);
+
             System.out.println();
             System.out.println(message);
             System.out.println("--------------------------------------------------");
             System.out.println("Network Values - Paid to All Miners");
             System.out.println("--------------------------------------------------");
             System.out.println("    Block Rewards (in Erg): " + df.format(Functions.dailyBlockRewards(networkBlockRewards, networkBlockTime)) + " ERG");
-            System.out.println("    Block Rewards (in Value): " + df.format(Functions.dailyBlockRewardsInValue(networkBlockRewards, ergoPrice, networkBlockTime)) + " €");
+            System.out.println("    Block Rewards (in Value): " + df.format(Functions.dailyBlockRewardsInValue(networkBlockRewards, ergoPrice, networkBlockTime)) + " \u0024");
             System.out.println();
             System.out.println("--------------------------------------------------");
             System.out.println("Your Mining Farm");
             System.out.println("--------------------------------------------------");
-            System.out.println("    Mining Farm Revenue: " + df.format((Functions.dailyReturns(networkBlockRewards, ergoPrice, networkHashrate, userHashrate, networkBlockTime))) + " €");
-            System.out.println("    Mining Farm Cost: " + df.format(Functions.dailyCost(userWattsHour, userHours, userPriceKwHour)) + " €");
+            System.out.println("    Mining Farm Revenue: " + df.format(farmRevenue) + "  \u0024");
+            System.out.println("    Mining Farm Cost: " + df.format(farmCost) + " \u0024");
             System.out.println();
-            System.out.println("    Total Mined - Profit: " + df.format(Functions.dailyReturns(networkBlockRewards, ergoPrice, networkHashrate, userHashrate, networkBlockTime) - Functions.dailyCost(userWattsHour, userHours, userPriceKwHour)) + " €");
-            System.out.println("    Total Mined - Tokens: " + df.format(Functions.minedReturnsErg(networkBlockRewards, userHashrate, networkHashrate, networkBlockTime)) + " ERG");
+            System.out.println("    Total Mined - Profit: " + df.format(farmProfit) + " \u0024");
+            System.out.println("    Total Mined - Tokens: " + df.format(farmMined) + " ERG");
             System.out.println("--------------------------------------------------");
             String date = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm").withZone(ZoneId.systemDefault()).format(Instant.now());
             System.out.println(date);
             System.out.println();
 
             // Save FarmStats
-            double[] arrayStats = {ergoPrice, userHashrate, userWattsHour, userHours, userPriceKwHour, networkBlockTime, networkBlockRewards, networkHashrate};
+            double[] arrayStats = {ergoPrice, userHashrate, userWattsHour, userHours, userPriceKwHour, networkBlockTime, networkBlockRewards, networkHashrate, farmRevenue, farmCost, farmProfit, farmMined };
             Functions.saveFarmStats(date, arrayStats);
 
             // Ask user to recalculate or exit the program
