@@ -2,7 +2,6 @@ package portugal.ergo.tools;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.util.Arrays;
 
 public class Functions {
 
@@ -35,23 +34,22 @@ public class Functions {
         return dailyBlockRewards(_networkBlockRewards, _networkBlockTime) * minedTokenShare(_userHashrate, _networkHashrate);
     }
 
+
     public static void saveFarmStats(String date, double[] lista) {
         try {
-            BufferedWriter theWriter = new BufferedWriter(new FileWriter(System.getProperty("user.dir")+"/Status_Miner-Farm.json"));
-            String[] arrayName = {"ergoPrice", "userHashrate", "userWattsHour", "userHours", "userPriceKwHour", "networkBlockTime", "networkBlockRewards", "networkHashrate"};
+            String[] arrayName = {"ergoPrice", "userHashrate", "userWattsHour", "userHours", "userPriceKwHour", "networkBlockTime", "networkBlockRewards", "networkHashrate", "farmRevenue", "farmCost", "farmProfit", "farmMined"};
 
-            int i = 0;
-            theWriter.append(Arrays.toString( new String[]{"{date" + ":" + date +"}"}));
-            theWriter.newLine();
-            for (double x: lista) {
-                theWriter.append(Arrays.toString(new String[]{"{"+arrayName[i] + ":" + x+"}"}));
-                theWriter.newLine();
-                i++;
+            BufferedWriter theWriter = new BufferedWriter(new FileWriter(System.getProperty("user.dir") + "/Status_Miner-Farm.json"));
+            theWriter.append("{\"date\" :").append("\"" + date + "\"");
+            for (int i = 0; i < lista.length; i++) {
+                theWriter.append(",\"" +arrayName[i]+ "\"").append(":").append(String.valueOf(lista[i]));
             }
+            theWriter.append("}");
             theWriter.close();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
 }
