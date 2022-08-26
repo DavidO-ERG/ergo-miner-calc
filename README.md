@@ -27,7 +27,7 @@
 Welcome Ergonaut!
 This is a simple calculator to help miners evaluate the Mining Farm and Network Status of Ergo Blockchain.
 
-You just need to provide your "`hashrate`", "`wattage per hour`", "`price of electricity(€ KW/h)`" and the "`hours`" you want/have been mining.
+You just need to provide your `hashrate`, `wattage per hour`, `price of electricity(€ KW/h)` and the `hours` you want/have been mining.
 
 From Miners, to Miners! 
 Happy Mining!
@@ -47,7 +47,7 @@ and run the file as follows: `java -jar path_to_jar/ergo-miner-calc.jar`
 ## Guide 
 The application first connect to the API "TokenJay.App" and collect the `Ergo/SigUSD Price`.
 
-Then establish other connection with "WhatToMine.com" and collect the `Block Time`, `Block Reward`" and `Network Hashrate`.
+Then establish other connection with "WhatToMine.com" and collect the `Block Time`, `Block Reward` and `Network Hashrate`.
 
 You just need to provide your `hashrate`, `wattage per hour`, `price of electricity(€ KW/h)` and the `hours` you want/have been mining.
 
@@ -77,6 +77,7 @@ At the end, the results will be output to the same folder as the jar file. Check
 ---
 ## Contributing
 Do you wish to contribute? First, thank very much for your time 😇. Please feel free to send any improvements you want. 
+
 This is a small open-source project to learn and grow this awesome community so thank once again! 
 
 ---
@@ -84,7 +85,7 @@ This is a small open-source project to learn and grow this awesome community so 
 ---
 ## Links
 
-- [ErgoPlatform](https://ergoplatform.org/en/discover/)
+- [Discover Ergo](https://ergoplatform.org/en/discover/)
 - [Ergo Youtube Channel](https://www.youtube.com/c/ErgoPlatform)
 - [Ergonaut.Space](https://ergonaut.space/)
 
