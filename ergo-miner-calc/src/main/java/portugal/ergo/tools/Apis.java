@@ -10,88 +10,40 @@ import java.util.Scanner;
 
 public class Apis {
 
-    public static double apiCallPrice() {
+    public static JSONObject makeApiCall(String apiName, URL apiUrl) {
         try {
-            URL apiPrice = new URL("https://api.tokenjay.app/tokens/prices/03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04");
-            //URL apiPrice = new URL("https://api.coingecko.com/api/v3/coins/ergo?localization=false&tickers=true&market_data=false&community_data=false&developer_data=false&sparkline=false");
-            HttpURLConnection reqPrice = (HttpURLConnection) apiPrice.openConnection();
-            reqPrice.setRequestMethod("GET");
-            reqPrice.setConnectTimeout(5000);
-            reqPrice.setReadTimeout(5000);
-            reqPrice.connect();
+            // Call to an API
+            HttpURLConnection req = (HttpURLConnection) apiUrl.openConnection();
+            req.setRequestMethod("GET");
+            req.setConnectTimeout(5000);
+            req.setReadTimeout(5000);
+            req.connect();
 
-            if (reqPrice.getResponseCode() != 200) {
-                throw new RuntimeException("HttpResponseCode: " + reqPrice.getResponseCode());
+            // Validate request and if successful, returns data
+            if (req.getResponseCode() != 200) {
+                throw new RuntimeException("HttpResponseCode: " + req.getResponseCode());
             } else {
-                StringBuilder dataPrice = new StringBuilder();
-                Scanner scanInput = new Scanner(apiPrice.openStream());
+                Scanner scanInput = new Scanner(apiUrl.openStream());
+                StringBuilder data = new StringBuilder();
 
                 while (scanInput.hasNext()) {
-                    dataPrice.append(scanInput.nextLine());
+                    data.append(scanInput.nextLine());
                 }
                 scanInput.close();
 
-                JSONParser jsonP = new JSONParser();
-                Object jsonData = jsonP.parse(String.valueOf(dataPrice));
-                JSONObject jsonFinal = (JSONObject) jsonData;
+                JSONParser jsonparser = new JSONParser();
+                Object obj = jsonparser.parse(data.toString());
 
+                // Save to file
+                BufferedWriter theWriter = new BufferedWriter(new FileWriter(System.getProperty("user.dir") + "/Status_API-" + apiName + ".json"));
+                theWriter.write(obj.toString());
+                theWriter.close();
 
-                try {
-                    BufferedWriter theWriter = new BufferedWriter(new FileWriter(System.getProperty("user.dir")+"/Status_API-Price.json"));
-                    theWriter.write(jsonFinal.toJSONString());
-                    theWriter.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                return ((Long) jsonFinal.get("price")) / 100_000_000.00;
+                return (JSONObject) obj;
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return 0.00;
-        }
-
-    }
-
-    public static String[] apiCallNetwork() {
-        try {
-            URL apiNetwork = new URL("https://whattomine.com/coins/340.json");
-            HttpURLConnection reqNetwork = (HttpURLConnection) apiNetwork.openConnection();
-            reqNetwork.setRequestMethod("GET");
-            reqNetwork.setConnectTimeout(5000);
-            reqNetwork.setReadTimeout(5000);
-            reqNetwork.connect();
-
-            if (reqNetwork.getResponseCode() != 200) {
-                throw new RuntimeException("HttpResponseCode: " + reqNetwork.getResponseCode());
-            } else {
-                StringBuilder dataNetwork = new StringBuilder();
-                Scanner scanInput = new Scanner(apiNetwork.openStream());
-
-                while (scanInput.hasNext()) {
-                    dataNetwork.append(scanInput.nextLine());
-                }
-                scanInput.close();
-
-                JSONParser jsonP = new JSONParser();
-                Object jsonData = jsonP.parse(String.valueOf(dataNetwork));
-                JSONObject jsonFinal = (JSONObject) jsonData;
-
-                try {
-                    BufferedWriter theWriter = new BufferedWriter(new FileWriter(System.getProperty("user.dir")+"/Status_API-Network.json"));
-                    theWriter.write(jsonFinal.toJSONString());
-                    theWriter.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-
-                return new String[]{jsonFinal.get("nethash").toString(), jsonFinal.get("block_reward").toString(), jsonFinal.get("block_time").toString()};
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new String[]{null};
+            return new JSONObject();
         }
     }
 }
-
