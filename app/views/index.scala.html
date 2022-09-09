@@ -1,0 +1,57 @@
+@(price: String, stats: List[String])
+
+@main("Ergo Miner Calculator") {
+<div class="root">
+  <div class="root2">
+    <div class="header">
+      <h1>Ergo Mining Calculator</h1>
+      <a href="https://ergonaut.space/en/Ergo/manifesto" target="_blank" style="color:white">Read Ergo Manifesto</a>
+    </div>
+    <div class="box">
+      <div class="miniBox">
+        <p >Σ PRICE</p><br>
+        <label id="currentPriceBox">@(price)</label>
+      </div>
+    </div>
+    <div class="box">
+      <div class="miniBox">
+        <p >REVENUE</p><br>
+        <label id="dailyRevenue"></label>
+      </div>
+    </div>
+    <div class="box">
+      <div class="miniBox">
+        <p >COST</p><br>
+        <label id="dailyCost"></label>
+      </div>
+    </div>
+    <div class="box">
+      <div class="miniBox">
+        <p >DIFF</p><br>
+        <label id="dailyDiff"></label>
+      </div>
+    </div>
+    <form onsubmit="return false">
+      <div class="inputs1">
+        <input id="hashrate" name="hashrate" type="number" placeholder="Hashrate (in MHs)" step="0.01" autofocus required >
+        <input id="wattsHour" name="wattsHour" type="number" placeholder="Watts/h" step="0.01" required>
+        <input id="currentPrice" name="currentPrice" type="number" placeholder="Ergo Current Price" step="0.01" required value=@(price)>
+        <input id="priceKwHour" name="priceKwHour" type="number" placeholder="Price per Kw/h" step="0.0001" required value="0.15">
+      </div>
+      <div class="inputs2">
+        <input id="hoursMined" name="hoursMined" type="number" placeholder="Hours Spent Mining" step="0.01" required value="24.0">
+        <input id="networkHashrate" name="networkHashrate" type="number" placeholder="Network Hashrate" step="0.000000000001" required value=@(stats(0))>
+        <input id="blockRewards" name="blockRewards" type="number" placeholder="Block Rewards" step="0.01" required value=@(stats(1))>
+        <input id="blockTime" name="blockTime" type="number" placeholder="Block Time" step="0.01" required value=@( stats(2).substring(1,stats(2).length()-1) )>
+      </div>
+      <div>
+        <button class="reset" type="reset" onclick="resetAll()">RESET</button>
+        <button class="submit" onclick="finalResults()">CALCULATE</button>
+      </div>
+    </form>
+    <div class="footer">
+      <p>from Ergo Community</p>
+    </div>
+  </div>
+</div>
+}
