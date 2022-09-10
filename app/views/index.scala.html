@@ -1,4 +1,4 @@
-@(price: String, stats: List[String])
+@(price: Seq[String], stats: Seq[String])
 
 @main("Ergo Miner Calculator") {
 <div class="root">
@@ -10,7 +10,7 @@
     <div class="box">
       <div class="miniBox">
         <p >Σ PRICE</p><br>
-        <label id="currentPriceBox">@(price)</label>
+        <label id="currentPriceBox">@(price(0))</label>
       </div>
     </div>
     <div class="box">

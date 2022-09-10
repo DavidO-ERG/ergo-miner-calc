@@ -5,7 +5,7 @@ function finalResults() {
     document.getElementById("dailyRevenue").innerHTML = dailyRevenue().toFixed(2) + " €";
     document.getElementById("dailyCost").innerHTML = dailyCost().toFixed(2) + " €";
     document.getElementById("dailyDiff").innerHTML = (dailyRevenue() - dailyCost()).toFixed(2) + " €";
-    saveResults();
+//    saveResults();
 }
 
 function resetAll() {
