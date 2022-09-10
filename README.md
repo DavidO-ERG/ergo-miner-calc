@@ -13,11 +13,12 @@
 [Links](#links)⛏
 [Special Notes](#special-notes)
 
-<img src="https://img.shields.io/badge/version-0.2.1-blue">
+<img src="https://img.shields.io/badge/version-0.2.2-blue">
 <img src="https://img.shields.io/badge/PT-flag.svg?color=555555&style=flat-square&logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHJlY3QgeT0iODUuMzM3IiBzdHlsZT0iZmlsbDojRDgwMDI3OyIgd2lkdGg9IjUxMiIgaGVpZ2h0PSIzNDEuMzI2Ii8+Cjxwb2x5Z29uIHN0eWxlPSJmaWxsOiM2REE1NDQ7IiBwb2ludHM9IjE5Ni42NDEsODUuMzM3IDE5Ni42NDEsMjYxLjU2NSAxOTYuNjQxLDQyNi42NjMgMCw0MjYuNjYzIDAsODUuMzM3ICIvPgo8Y2lyY2xlIHN0eWxlPSJmaWxsOiNGRkRBNDQ7IiBjeD0iMTk2LjY0MSIgY3k9IjI1NiIgcj0iNjQiLz4KPHBhdGggc3R5bGU9ImZpbGw6I0Q4MDAyNzsiIGQ9Ik0xNjAuNjM4LDIyNHY0MC4wMDFjMCwxOS44ODIsMTYuMTE4LDM2LDM2LDM2czM2LTE2LjExOCwzNi0zNlYyMjRIMTYwLjYzOHoiLz4KPHBhdGggc3R5bGU9ImZpbGw6I0YwRjBGMDsiIGQ9Ik0xOTYuNjM4LDI3NmMtNi42MTcsMC0xMi01LjM4My0xMi0xMnYtMTZoMjQuMDAxdjE2QzIwOC42MzgsMjcwLjYxNiwyMDMuMjU0LDI3NiwxOTYuNjM4LDI3NnoiLz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==">
 <a href=https://ergonaut.space/en/Ergo/manifesto> <img src=https://img.shields.io/badge/READ-ERGO%20MANIFESTO-blue></a>
 
-![image](https://user-images.githubusercontent.com/21132833/189398677-dbb5aff8-2fd1-4f2c-b07b-21ee807b5395.png)
+![image](https://user-images.githubusercontent.com/21132833/189499396-d7d8074a-b01d-4726-abad-b12c066ce870.png)
+
 </div>
 
 ---
@@ -38,12 +39,21 @@ Happy Mining!
 
 ---
 ## Installation
-To be able to run this application, you need first to install all Scala tools. 
-1. [Install Scala](https://www.scala-lang.org/download/) (Linux / MacOS / Windows)
-2. Fork this repository
-3. Open a Terminal/Powershell session in the same folder where you stored the repository
-4. Run the following command: `sbt run`
-5. Open a browser or a new tab and go to `localhost:9000`
+#### Windows 
+1. Download the latest [release](https://github.com/DavidO-ERG/ergo-miner-calc/releases)
+2. Extract the downloaded file and go to the folder `\bin`
+3. Run `ergo-miner-calc.bat`
+4. Open your browser and go to `localhost:9000`
+5. Calculate your rewards!
+
+
+#### Linux
+1. Download the latest [release](https://github.com/DavidO-ERG/ergo-miner-calc/releases)
+2. Extract the downloaded file, go the root folder and apply `chmod +x /bin/ergo-miner-calc`
+3. Run `ergo-miner-calc`
+4. Open your browser and go to `localhost:9000`
+5. Calculate your rewards!
+
 ---
 
 ---
@@ -53,7 +63,7 @@ To be able to run this application, you need first to install all Scala tools.
 - You just need to provide your `Hashrate` and your `Watts/h`.
 - If you have access to Internet, the API will fill the rest with the required fields, 
 otherwise you'll have to enter all fields manually.
-- At the end, the files will be stored inside Public folder.
+- At the end, the files will be stored inside `MinerStats` folder.
 - Check the output files: `ErgoPrice.json` and `WhatToMine.json`. The file `MinerStats.json` is still under work.
 
 ---

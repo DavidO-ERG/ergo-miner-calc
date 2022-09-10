@@ -12,8 +12,8 @@ class MyController @Inject()(val controllerComponents: ControllerComponents) ext
   val urlWhatToMine: String = "https://whattomine.com/coins/340.json"
 
   // File Location
-  val fileCoinGecko = "./public/MinerStats/ErgoPrice.json"
-  val fileWhatToMine = "./public/MinerStats/WhatToMine.json"
+  val fileCoinGecko = "./MinerStats/ErgoPrice.json"
+  val fileWhatToMine = "./MinerStats/WhatToMine.json"
 
   def index(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index(
