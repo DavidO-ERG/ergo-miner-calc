@@ -9,10 +9,19 @@ function finalResults() {
 }
 
 function resetAll() {
-    document.getElementById("currentPriceBox").innerHTML = "0.00 €";
-    document.getElementById("dailyRevenue").innerHTML = "0.00 €";
-    document.getElementById("dailyCost").innerHTML = "0.00 €";
-    document.getElementById("dailyDiff").innerHTML = "0.00 €";
+    document.getElementById("currentPriceBox").innerHTML = "";
+    document.getElementById("dailyRevenue").innerHTML = "";
+    document.getElementById("dailyCost").innerHTML = "";
+    document.getElementById("dailyDiff").innerHTML = "";
+
+    document.getElementById("hashrate").setAttribute("value", "");
+    document.getElementById("wattsHour").setAttribute("value", "");
+    document.getElementById("currentPrice").setAttribute("value", "");
+    document.getElementById("priceKwHour").setAttribute("value", "");
+    document.getElementById("hoursMined").setAttribute("value", "");
+    document.getElementById("networkHashrate").setAttribute("value", "");
+    document.getElementById("blockRewards").setAttribute("value", "");
+    document.getElementById("blockTime").setAttribute("value", "");
 }
 
 function kwPerHour() {
