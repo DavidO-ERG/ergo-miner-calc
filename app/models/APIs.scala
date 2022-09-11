@@ -15,13 +15,15 @@ object APIs {
     saveToFile(json, filePath)
     if (url contains "coingecko") {
       Seq(json("ergo")("eur").toString())
-    } else if (url contains "whattomine") {
+    }
+    else if (url contains "whattomine") {
       val getNetHashrate = Json.toJson(json("nethash")).toString()
       val getBlockReward = Json.toJson(json("block_reward")).toString()
       val getBlockTime = Json.toJson(json("block_time")).toString()
-      Seq((getNetHashrate.toLong / 1000000000000.0).toString, getBlockReward, getBlockTime.replaceAll(""""""",""))
-    } else {
-      Seq("","","")
+      Seq((getNetHashrate.toLong / 1000000000000.0).toString, getBlockReward, getBlockTime.replaceAll(""""""", ""))
+    }
+    else {
+      Seq("", "", "")
     }
   }
 
