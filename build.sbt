@@ -1,6 +1,6 @@
 name := """ergo-miner-calc"""
 organization := "portugal.ergo"
-version := "0.2.2"
+version := "0.2.3"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
