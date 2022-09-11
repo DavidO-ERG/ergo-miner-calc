@@ -1,5 +1,16 @@
+// To calculate dailyBlockRewards()
 const minutesPerDay = 1440;
 
+// For the Loading Screen
+function timeOutLoadingPage() {
+  return setTimeout(showPage, 3000);
+}
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("root2").style.display = "block";
+}
+
+// Show Results to User
 function finalResults() {
     document.getElementById("currentPriceBox").innerHTML = document.getElementById("currentPrice").value + " €";
     document.getElementById("dailyRevenue").innerHTML = dailyRevenue().toFixed(2) + " €";

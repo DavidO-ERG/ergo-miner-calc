@@ -23,9 +23,9 @@ class MyController @Inject()(val controllerComponents: ControllerComponents) ext
       ))
     }
     catch {
-      case _ : java.net.NoRouteToHostException |
-           _ : java.net.UnknownHostException |
-           _ : com.fasterxml.jackson.core.JsonParseException => {
+      case _: java.net.NoRouteToHostException |
+           _: java.net.UnknownHostException |
+           _: com.fasterxml.jackson.core.JsonParseException => {
         Ok(views.html.index(
           Seq(""),
           Seq("", "", "")
