@@ -39,20 +39,26 @@ Happy Mining!
 
 ---
 ## Installation
+
+> This WebApp requires Java JDK
+
 #### Windows 
-1. Download the latest [release](https://github.com/DavidO-ERG/ergo-miner-calc/releases)
-2. Extract the downloaded file and go to the folder `\bin`
-3. Run `ergo-miner-calc.bat`
-4. Open your browser and go to `localhost:9000`
-5. Calculate your rewards!
+1. Install [Oracle Java](https://www.oracle.com/java/technologies/downloads/)
+2. Download the latest [release](https://github.com/DavidO-ERG/ergo-miner-calc/releases)
+3. Extract the downloaded file and go to the folder `\bin`
+4. Run `ergo-miner-calc.bat`
+5. Open your browser and go to `localhost:9000`
+6. Calculate your rewards!
 
 
 #### Linux
-1. Download the latest [release](https://github.com/DavidO-ERG/ergo-miner-calc/releases)
-2. Extract the downloaded file, go the root folder and apply `chmod +x /bin/ergo-miner-calc`
-3. Run `ergo-miner-calc`
-4. Open your browser and go to `localhost:9000`
-5. Calculate your rewards!
+1. Install [Oracle Java](https://www.oracle.com/java/technologies/downloads/)
+    - Alternatively in an Debian based system, open Terminal and run `sudo apt install default-jre`
+2. Download the latest [release](https://github.com/DavidO-ERG/ergo-miner-calc/releases)
+3. Extract the downloaded file, go the root folder and apply `chmod +x /bin/ergo-miner-calc`
+4. Run `ergo-miner-calc`
+5. Open your browser and go to `localhost:9000`
+6. Calculate your rewards!
 
 ---
 
