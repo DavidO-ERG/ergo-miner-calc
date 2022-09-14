@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ergonaut
+      MYSQL_DATABASE: miner_status
+      MYSQL_USER: miner
+      MYSQL_PASSWORD: "ergonaut"
+    ports:
+      - "3307:3306"
+    volumes:
+      - db:/var/lib/mysql
+      - ./db/init-scripts.sql:/docker-entrypoint-initdb.d/scripts.sql
+
+volumes:
+  db:
+    driver: local

@@ -16,26 +16,13 @@ class MyController @Inject()(val controllerComponents: ControllerComponents) ext
   val fileWhatToMine = "./MinerStats/WhatToMine.json"
 
   def index(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
-    try {
       Ok(views.html.index(
         callApi(urlCoinGecko, fileCoinGecko),
-        callApi(urlWhatToMine, fileWhatToMine)
-      ))
-    }
-    catch {
-      case _: java.net.NoRouteToHostException |
-           _: java.net.UnknownHostException |
-           _: com.fasterxml.jackson.core.JsonParseException => {
-        Ok(views.html.index(
-          Seq(""),
-          Seq("", "", "")
-        ))
-      }
-    }
+        callApi(urlWhatToMine, fileWhatToMine))
+      )
   }
 
   def openReports(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.reports())
   }
-
 }

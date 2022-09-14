@@ -8,22 +8,28 @@ import java.time.format.DateTimeFormatter
 
 object APIs {
 
+  val minFieldsNeeded: Seq[String] = Seq("", "", "") // min fields to run the HTML Page
+
   def callApi(url: String, filePath: String): Seq[String] = {
-    val data = fromURL(url)
-    val json = Json.toJson(Json.parse(data.mkString))
-    data.close()
-    saveToFile(json, filePath)
-    if (url contains "coingecko") {
-      Seq(json("ergo")("eur").toString())
+    try {
+      val data = fromURL(url)
+      val json = Json.toJson(Json.parse(data.mkString))
+      data.close()
+      saveToFile(json, filePath)
+      url match {
+        case api1 if api1.contains("coingecko") => Seq(json("ergo")("eur").toString())
+        case api2 if api2.contains("whattomine")  =>
+          val getNetHashrate = Json.toJson(json("nethash")).toString()
+          val getBlockReward = Json.toJson(json("block_reward")).toString()
+          val getBlockTime = Json.toJson(json("block_time")).toString()
+          Seq((getNetHashrate.toLong / 1000000000000.0).toString, getBlockReward, getBlockTime.replaceAll(""""""", ""))
+        case _ => minFieldsNeeded
+      }
     }
-    else if (url contains "whattomine") {
-      val getNetHashrate = Json.toJson(json("nethash")).toString()
-      val getBlockReward = Json.toJson(json("block_reward")).toString()
-      val getBlockTime = Json.toJson(json("block_time")).toString()
-      Seq((getNetHashrate.toLong / 1000000000000.0).toString, getBlockReward, getBlockTime.replaceAll(""""""", ""))
-    }
-    else {
-      Seq("", "", "")
+    catch {
+      case _: java.net.NoRouteToHostException |
+           _: java.net.UnknownHostException |
+           _: com.fasterxml.jackson.core.JsonParseException => minFieldsNeeded
     }
   }
 
