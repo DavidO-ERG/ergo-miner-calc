@@ -15,14 +15,21 @@ class MyController @Inject()(val controllerComponents: ControllerComponents) ext
   val fileCoinGecko = "./MinerStats/ErgoPrice.json"
   val fileWhatToMine = "./MinerStats/WhatToMine.json"
 
-  def index(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+  // API Call's
+  val callCoinGecko: Seq[String] = callApi(urlCoinGecko, fileCoinGecko)
+  val callWhatToMine: Seq[String] = callApi(urlWhatToMine, fileWhatToMine)
+
+  // Send to Database
+
+
+  def index(): Action[AnyContent] = Action {
       Ok(views.html.index(
-        callApi(urlCoinGecko, fileCoinGecko),
-        callApi(urlWhatToMine, fileWhatToMine))
-      )
+        callCoinGecko,
+        callWhatToMine
+      ))
   }
 
-  def openReports(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+  def openReports(): Action[AnyContent] = Action {
     Ok(views.html.reports())
   }
 }

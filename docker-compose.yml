@@ -5,7 +5,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ergonaut
-      MYSQL_DATABASE: miner_status
+      MYSQL_DATABASE: MinerStatus
       MYSQL_USER: miner
       MYSQL_PASSWORD: "ergonaut"
     ports:

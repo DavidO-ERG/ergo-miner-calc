@@ -32,10 +32,10 @@ lazy val myLibraries = Seq(
     jdbc,
     "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test,
     "com.typesafe.play" %% "play-slick" % "5.0.2",
-    "com.typesafe.slick" %% "slick" % "3.3.2",
+    "com.typesafe.slick" %% "slick" % "3.3.3",
     "com.typesafe.play" %% "play-json" % "2.10.0-RC6",
-    "mysql" % "mysql-connector-java" % "5.1.41",
-    "com.typesafe.slick" %% "slick-hikaricp" % "3.3.2"
+    "mysql" % "mysql-connector-java" % "8.0.30",
+    "com.typesafe.slick" %% "slick-hikaricp" % "3.3.3"
     )
 
 

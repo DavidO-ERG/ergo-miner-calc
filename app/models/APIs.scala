@@ -2,18 +2,19 @@ package models
 
 import play.api.libs.json.{JsValue, Json}
 import scala.io.Source.fromURL
-import java.io._
+import java.io.{BufferedWriter, OutputStreamWriter, FileOutputStream}
 import java.time.{ZoneId, Instant}
 import java.time.format.DateTimeFormatter
 
 object APIs {
 
   def callApi(url: String, filePath: String): Seq[String] = {
-    val urlFields = url.split(":")
+    val urlFields: Array[String] = url split (":")
     val minFieldsNeeded: Seq[String] = Seq.fill(urlFields.length + 1)("") // min fields to run the HTML Page Offline
+
     try {
-      val data = fromURL(url)
-      val json = Json.toJson(Json.parse(data.mkString))
+      val data: scala.io.Source = fromURL(url)
+      val json: JsValue = Json.toJson(Json.parse(data.mkString))
       data.close()
       saveToFile(json, filePath)
       url match {
@@ -35,7 +36,7 @@ object APIs {
 
   def saveToFile(data: JsValue, filename: String): Unit = {
     val date: String = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss").withZone(ZoneId.systemDefault).format(Instant.now)
-    val writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename, true)))
+    val writer: BufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename, true)))
     writer.write("\"" + date + "\":")
     writer.write(Json.stringify(Json.toJson(data)))
     writer.write(",\n")
