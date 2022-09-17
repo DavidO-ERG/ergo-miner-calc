@@ -1,8 +1,8 @@
 package controllers
 
-import javax.inject._
-import play.api.mvc._
-import models.APIs._
+import play.api.mvc.{Action, AnyContent, BaseController, ControllerComponents}
+import javax.inject.{Inject, Singleton}
+import models.APIs.callApi
 
 @Singleton
 class MyController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
@@ -20,7 +20,6 @@ class MyController @Inject()(val controllerComponents: ControllerComponents) ext
   val callWhatToMine: Seq[String] = callApi(urlWhatToMine, fileWhatToMine)
 
   // Send to Database
-
 
   def index(): Action[AnyContent] = Action {
       Ok(views.html.index(

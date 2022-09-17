@@ -1,9 +1,15 @@
-@()
+@(test: Seq[ErgoPrice])
 
 @main("teste") {
 
 <div class="root">
     <div class="root2">
+
+        @test.map { stock =>
+        <li>
+            @stock
+        </li>
+        }
 
     </div>
 </div>

@@ -4,16 +4,14 @@ services:
     image: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ergonaut
-      MYSQL_DATABASE: MinerStatus
-      MYSQL_USER: miner
-      MYSQL_PASSWORD: "ergonaut"
+      MYSQL_ROOT_PASSWORD: "ergonaut"
+      MYSQL_DATABASE: "MinerStatus"
     ports:
       - "3307:3306"
     volumes:
       - db:/var/lib/mysql
       - ./db/init-scripts.sql:/docker-entrypoint-initdb.d/scripts.sql
-
+      - ./db/my.cnf:/etc/new/my.cnf
 volumes:
   db:
     driver: local

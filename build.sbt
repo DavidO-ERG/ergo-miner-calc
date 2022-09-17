@@ -28,16 +28,14 @@ lazy val myOptions = Seq(
 )
 
 lazy val myLibraries = Seq(
-    guice,
-    jdbc,
+    "com.typesafe.play" %% "play-guice" % "2.8.16",
     "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test,
     "com.typesafe.play" %% "play-slick" % "5.0.2",
     "com.typesafe.slick" %% "slick" % "3.3.3",
+    "com.typesafe.slick" %% "slick-hikaricp" % "3.3.3",
     "com.typesafe.play" %% "play-json" % "2.10.0-RC6",
     "mysql" % "mysql-connector-java" % "8.0.30",
-    "com.typesafe.slick" %% "slick-hikaricp" % "3.3.3"
     )
-
 
 lazy val root = (project in file("."))
     .enablePlugins(PlayScala)
