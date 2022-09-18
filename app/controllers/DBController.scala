@@ -2,16 +2,11 @@ package controllers
 
 import models.DBConnections
 import play.api.mvc.{AbstractController, Action, AnyContent, ControllerComponents}
-
 import javax.inject.Inject
 import models.APIs.{callCoinGecko, callWhatToMine}
 
-import java.time.format.DateTimeFormatter
-import java.time.{Instant, ZoneId}
 
 class DBController @Inject()(cc: ControllerComponents) extends AbstractController(cc){
-
-  val date: String = DateTimeFormatter.ofPattern("ddMMyyyy").withZone(ZoneId.systemDefault).format(Instant.now)
 
   // Tables Name
   val priceTable = "ErgoPrice"
@@ -41,8 +36,8 @@ class DBController @Inject()(cc: ControllerComponents) extends AbstractControlle
   val getAllWhatToMine = s"SELECT * FROM $whatToMineTable"
   val getAllMiner = s"SELECT * FROM $minerTable"
 
-  val insertPrices = s"INSERT ${priceTable}  (${colTimestamps}, ${colSymbol}, ${colPrice}) VALUES (${date},'eur',${callCoinGecko.head});"
-  val insertNetwork = s"INSERT ${whatToMineTable} (${colTimestamps}, ${colNetHash}, ${colBlockReward}, ${colBlockTime}) VALUES (${date},${callWhatToMine.head},${callWhatToMine(1)},${callWhatToMine(2)});"
+  val insertPrices = s"INSERT ${priceTable}  (${colTimestamps}, ${colSymbol}, ${colPrice}) VALUES ((SELECT CURRENT_TIMESTAMP), 'eur', ${callCoinGecko.head});"
+  val insertNetwork = s"INSERT ${whatToMineTable} (${colTimestamps}, ${colNetHash}, ${colBlockReward}, ${colBlockTime}) VALUES ((SELECT CURRENT_TIMESTAMP), ${callWhatToMine.head},${callWhatToMine(1)},${callWhatToMine(2)});"
   val deletePrices = "DELETE FROM ErgoPrice WHERE id <> 0;"
 
 

@@ -34,13 +34,16 @@ lazy val myLibraries = Seq(
     "com.typesafe.slick" %% "slick" % "3.3.3",
     "com.typesafe.slick" %% "slick-hikaricp" % "3.3.3",
     "com.typesafe.play" %% "play-json" % "2.10.0-RC6",
-    "mysql" % "mysql-connector-java" % "8.0.30",
+    "mysql" % "mysql-connector-java" % "8.0.30"
     )
 
 lazy val root = (project in file("."))
     .enablePlugins(PlayScala)
+    .enablePlugins(DockerPlugin, DockerComposePlugin)
     .settings(
-        commonSettings,
-        libraryDependencies ++= myLibraries,
-        scalacOptions ++= myOptions
+          commonSettings,
+          libraryDependencies ++= myLibraries,
+          scalacOptions ++= myOptions
     )
+
+dockerImageCreationTask := (publishLocal in Docker).value
