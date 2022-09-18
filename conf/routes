@@ -7,7 +7,7 @@
 GET     /                           controllers.MyController.index
 GET     /reports                    controllers.MyController.openReports
 
-GET     /teste                      controllers.DBConnections.openConnection
+GET     /teste                      controllers.DBController.showPrices
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

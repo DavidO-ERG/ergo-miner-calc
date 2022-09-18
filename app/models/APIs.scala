@@ -8,6 +8,18 @@ import java.time.format.DateTimeFormatter
 
 object APIs {
 
+  // API URL's
+  val urlCoinGecko: String = "https://api.coingecko.com/api/v3/simple/price?ids=ergo&vs_currencies=eur"
+  val urlWhatToMine: String = "https://whattomine.com/coins/340.json"
+
+  // File Location
+  val fileCoinGecko = "./MinerStats/ErgoPrice.json"
+  val fileWhatToMine = "./MinerStats/WhatToMine.json"
+
+  // API Call's
+  val callCoinGecko: Seq[String] = callApi(urlCoinGecko, fileCoinGecko)
+  val callWhatToMine: Seq[String] = callApi(urlWhatToMine, fileWhatToMine)
+
   def callApi(url: String, filePath: String): Seq[String] = {
     val urlFields: Array[String] = url split (":")
     val minFieldsNeeded: Seq[String] = Seq.fill(urlFields.length + 1)("") // min fields to run the HTML Page Offline
