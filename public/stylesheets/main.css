@@ -14,10 +14,6 @@
     background-repeat: no-repeat;
 }
 
-.miniBox {
-    margin-bottom:2.5vh;
-}
-
 .box {
     float: left;
     width: 12vw;
@@ -48,8 +44,7 @@
 }
 
 .header {
-    padding:2vw;
-    margin-top:1.1vw;
+    padding: 1.0vw;
 }
 
 input {
@@ -64,7 +59,7 @@ input {
     background:linear-gradient(to bottom, #000000 70%, #FF5E18 100%);
 }
 
-.reset {
+.reset, .savetodb {
     border-radius: 50px;
     height:7.5vh;
     width: 7.5vw;
@@ -93,10 +88,12 @@ input {
     display:inline-block;
     cursor:pointer;
 }
-.submit:hover, .reset:hover {
+
+.submit:hover, .reset:hover, .savetodb:hover {
 	background:linear-gradient(to bottom, #FF5E18 5%, #000000 75%);
 }
-.submit:active, .reset:active {
+
+.submit:active, .reset:active, .savetodb:active {
 	position:relative;
 	top:1px;
 }
@@ -108,7 +105,7 @@ input {
 
 .reports {
     position: relative;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -139,20 +136,75 @@ label {
     position: relative;
     top: 40%;
     animation-name: animatebottom;
-    animation-duration: 1.5s
+    animation-duration: 1.0s
 }
 
 .animate-bottom {
   position: relative;
   animation-name: animatebottom;
-  animation-duration: 1.5s
+  animation-duration: 1.0s
+}
+
+.roottables {
+    margin-top: -7.0vh;
+    padding: 7.5vh;
+    text: center;
+ }
+
+.tableprices, .tablenetwork, .tableminer {
+    margin: 1.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2.5px solid #FF5E18;
+    border-radius: 50px;
+    text: center;
+}
+
+th {
+    text-align: center;
+}
+
+ol {
+    padding: 0.0vh 2.5vw;
+}
+
+caption {
+    padding: 2.0vw;
+    font-size:1.5vh;
+    font-size:1.5vw;
+    border-radius: 50px 0px;
+    border: 1.0px solid #FF5E18;
+}
+
+.nav {
+    overflow: hidden;
+    padding: 1.0vh 10.0vw;
+}
+
+.nav a {
+    float: left;
+    color: #FFFFFF;
+    padding: 1.0vh 7.7vw;
+    font-size: 20px;
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50px;
+    border: 1.0px solid #FF5E18;
+}
+
+.topnav a:hover {
+  background-color: #FF5E18;
+  color: black;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @keyframes animatebottom {
-  from{ bottom:-100px; opacity:0 }
-  to{ bottom:0; opacity:1 }
+    from{ bottom:-100px; opacity:0 }
+    to{ bottom:0; opacity:1 }
+}

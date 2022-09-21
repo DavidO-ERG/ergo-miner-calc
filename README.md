@@ -13,7 +13,7 @@
 [Links](#links)⛏
 [Special Notes](#special-notes)
 
-<img src="https://img.shields.io/badge/version-0.2.3-blue">
+<img src="https://img.shields.io/badge/version-0.2.4-blue">
 <img src="https://img.shields.io/badge/PT-flag.svg?color=555555&style=flat-square&logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHJlY3QgeT0iODUuMzM3IiBzdHlsZT0iZmlsbDojRDgwMDI3OyIgd2lkdGg9IjUxMiIgaGVpZ2h0PSIzNDEuMzI2Ii8+Cjxwb2x5Z29uIHN0eWxlPSJmaWxsOiM2REE1NDQ7IiBwb2ludHM9IjE5Ni42NDEsODUuMzM3IDE5Ni42NDEsMjYxLjU2NSAxOTYuNjQxLDQyNi42NjMgMCw0MjYuNjYzIDAsODUuMzM3ICIvPgo8Y2lyY2xlIHN0eWxlPSJmaWxsOiNGRkRBNDQ7IiBjeD0iMTk2LjY0MSIgY3k9IjI1NiIgcj0iNjQiLz4KPHBhdGggc3R5bGU9ImZpbGw6I0Q4MDAyNzsiIGQ9Ik0xNjAuNjM4LDIyNHY0MC4wMDFjMCwxOS44ODIsMTYuMTE4LDM2LDM2LDM2czM2LTE2LjExOCwzNi0zNlYyMjRIMTYwLjYzOHoiLz4KPHBhdGggc3R5bGU9ImZpbGw6I0YwRjBGMDsiIGQ9Ik0xOTYuNjM4LDI3NmMtNi42MTcsMC0xMi01LjM4My0xMi0xMnYtMTZoMjQuMDAxdjE2QzIwOC42MzgsMjcwLjYxNiwyMDMuMjU0LDI3NiwxOTYuNjM4LDI3NnoiLz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==">
 <a href=https://ergonaut.space/en/Ergo/manifesto> <img src=https://img.shields.io/badge/READ-ERGO%20MANIFESTO-blue></a>
 
@@ -29,7 +29,7 @@
 #### Welcome Ergonaut!
 This is a simple community calculator to help miners evaluate approximately the Mining Farm and Network Status of the Ergo Blockchain.
 
-You just need to provide your `Hashrate` and your `Watts/h`!
+You just need to provide your `Hashrate` and your `Watts/h`! All information is stored in your local database!
 
 From Miners, to Miners! 
 
@@ -40,37 +40,40 @@ Happy Mining!
 ---
 ## Installation
 
-> This WebApp requires Java JDK
+> 1. Install [Oracle Java](https://www.oracle.com/java/technologies/downloads/)
+>    - Alternatively in an Debian based system, open Terminal and run `sudo apt install default-jre`
+> 2. Install [Docker](https://docs.docker.com/get-docker/). There is no need to create an account on Docker, we just need the application.
+> 3. Download the latest [ergo-miner-calc](https://github.com/DavidO-ERG/ergo-miner-calc/releases)
 
-#### Windows 
-1. Install [Oracle Java](https://www.oracle.com/java/technologies/downloads/)
-2. Download the latest [release](https://github.com/DavidO-ERG/ergo-miner-calc/releases)
-3. Extract the downloaded file and go to the folder `\bin`
-4. Run `ergo-miner-calc.bat`
-5. Open your browser and go to `localhost:9000`
-6. Calculate your rewards!
+#### Windows
+4. Extract the downloaded file and go to the folder `\bin`
+5. Run `ergo-miner-calc_All.bat`
+    
+   5.1. It will start DockerRun
+
+   5.2. It will start Play Framework
+
+6. Open your browser and go to `localhost:9000`
+7. Calculate your rewards!
 
 
 #### Linux
-1. Install [Oracle Java](https://www.oracle.com/java/technologies/downloads/)
-    - Alternatively in an Debian based system, open Terminal and run `sudo apt install default-jre`
-2. Download the latest [release](https://github.com/DavidO-ERG/ergo-miner-calc/releases)
-3. Extract the downloaded file, go the root folder and apply `chmod +x /bin/ergo-miner-calc`
-4. Run `ergo-miner-calc`
-5. Open your browser and go to `localhost:9000`
-6. Calculate your rewards!
+4. Extract the downloaded file, go the root folder and apply `chmod +x /bin/ergo-miner-calc`
+5. Run `docker compose up`
+6. Run `ergo-miner-calc`
+7. Open your browser and go to `localhost:9000`
+8. Calculate your rewards!
 
 ---
 
 ---
 ## Guide 
 - The application first connect to the API `CoinGecko` and collects the `Ergo Price in Euros (€)`.
-- The other connection is with `WhatToMine` and collects the `Block Time`, `Block Reward` and `Network Hashrate`.
+- Then stablish a connection with `WhatToMine` and collects the `Block Time`, `Block Reward` and `Network Hashrate`.
 - You just need to provide your `Hashrate` and your `Watts/h`.
-- If you have access to Internet, the API will fill the rest with the required fields, 
-otherwise you'll have to enter all fields manually.
-- At the end, the files will be stored inside `MinerStats` folder.
-- Check the output files: `ErgoPrice.json` and `WhatToMine.json`. The file `MinerStats.json` is still under work.
+- Then all API Results are stored in a MySQL Database in localhost.
+- If you have access to Internet, the API will fill the required fields, otherwise you'll have to enter all fields manually.
+- The `Miners` table information is still under work.
 
 ---
 
@@ -84,7 +87,7 @@ otherwise you'll have to enter all fields manually.
 ---
 ## Next Steps
 
-- Continue working on MinerStats file
+- Continue working on Database
 - Add "Miner Reports"
 - Add connection to Ergo Node
 - and more if possible 😊...

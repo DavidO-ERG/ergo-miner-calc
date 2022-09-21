@@ -1,4 +1,4 @@
-package models
+package controllers
 
 import java.sql.{Connection, DriverManager}
 
@@ -13,7 +13,7 @@ object DBConnections {
       val statement = connection.createStatement()
       val resultSet = statement.executeQuery(query)
       while (resultSet.next()) {
-        counter += Seq(resultSet.getString(colName)) + ","
+        counter += resultSet.getString(colName) + ","
       }
     }
     catch {

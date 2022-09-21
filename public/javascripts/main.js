@@ -3,7 +3,7 @@ const minutesPerDay = 1440;
 
 // For the Loading Screen
 function timeOutLoadingPage() {
-  return setTimeout(showPage, 3000);
+  return setTimeout(showPage, 2000);
 }
 function showPage() {
   document.getElementById("loader").style.display = "none";
@@ -16,7 +16,6 @@ function finalResults() {
     document.getElementById("dailyRevenue").innerHTML = dailyRevenue().toFixed(2) + " €";
     document.getElementById("dailyCost").innerHTML = dailyCost().toFixed(2) + " €";
     document.getElementById("dailyDiff").innerHTML = (dailyRevenue() - dailyCost()).toFixed(2) + " €";
-//    saveResults();
 }
 
 function resetAll() {

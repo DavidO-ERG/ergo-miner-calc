@@ -1,0 +1,151 @@
+@(prices: Seq[String], network: Seq[String], miner: Seq[String])
+
+@main("DB View") {
+
+<div class="root">
+    <div class="root2">
+        <div class="nav">
+            <a href="@routes.MyController.index">Home</a>
+            <a href="@routes.MyController.showDB">DB Viewer</a>
+            <a href="@routes.MyController.openReports">Reports</a>
+        </div>
+        <div class="roottables">
+            <table class="tableprices">
+                <caption>Prices Table</caption>
+                <tr>
+                    <th>ID</th>
+                    <th>Timestamp</th>
+                    <th>Symbol</th>
+                    <th>Price</th>
+                </tr>
+                <td>
+                    @for(x <- prices(0).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                <td>
+                    @for(x <- prices(1).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                <td>
+                    @for(x <- prices(2).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                <td>
+                    @for(x <- prices(3).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                </tr>
+            </table>
+
+            <table class="tablenetwork">
+                <caption>Network Table</caption>
+                <tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Timestamp</th>
+                    <th>Network Hashrate</th>
+                    <th>Block Reward</th>
+                    <th>Block Time</th>
+                </tr>
+                <td>
+                    @for(x <- network(0).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                <td>
+                    @for(x <- network(1).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                <td>
+                    @for(x <- network(2).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                <td>
+                    @for(x <- network(3).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                <td>
+                    @for(x <- network(4).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                </tr>
+            </table>
+
+            <table class="tableminer">
+                <caption>Miner Table</caption>
+                <tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Timestamp</th>
+                    <th>Farm Revenue</th>
+                    <th>Farm Cost</th>
+                    <th>Farm Diff</th>
+                </tr>
+                <td>
+                    @for(x <- miner(0).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                <td>
+                    @for(x <- miner(1).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                <td>
+                    @for(x <- miner(2).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                <td>
+                    @for(x <- miner(3).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                <td>
+                    @for(x <- miner(4).split(",")) {
+                    <ol>
+                        @x
+                    </ol>
+                    }
+                </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+}

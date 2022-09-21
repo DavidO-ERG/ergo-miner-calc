@@ -1,34 +1,40 @@
 @(price: Seq[String], stats: Seq[String])
+@{DBController.saveToDB}
 
 @main("Ergo Miner Calculator") {
 <div id="loader" class="loader"></div>
 <div class="root">
     <div class="root2" id="root2" style="display:none;">
+        <div class="nav">
+            <a href="@routes.MyController.index">Home</a>
+            <a href="@routes.MyController.showDB">DB Viewer</a>
+            <a href="@routes.MyController.openReports">Reports</a>
+        </div>
         <div class="header">
             <h1>Ergo Mining Calculator</h1>
             <a href="https://ergonaut.space/en/Ergo/manifesto" target="_blank" style="color:white">Read Ergo
                 Manifesto</a>
         </div>
         <div class="box">
-            <div class="miniBox">
+            <div>
                 <p>Σ PRICE</p><br>
                 <label id="currentPriceBox">@(price(0))</label>
             </div>
         </div>
         <div class="box">
-            <div class="miniBox">
+            <div>
                 <p>REVENUE</p><br>
                 <label id="dailyRevenue"></label>
             </div>
         </div>
         <div class="box">
-            <div class="miniBox">
+            <div>
                 <p>COST</p><br>
                 <label id="dailyCost"></label>
             </div>
         </div>
         <div class="box">
-            <div class="miniBox">
+            <div>
                 <p>DIFF</p><br>
                 <label id="dailyDiff"></label>
             </div>
@@ -41,7 +47,7 @@
                 <input id="currentPrice" name="currentPrice" type="number" placeholder="Ergo Price" step="0.01"
                        required value=@(price)>
                 <input id="priceKwHour" name="priceKwHour" type="number" placeholder="Price Kw/h" step="0.0001"
-                       required value="0.15">
+                       required value="0.20">
             </div>
             <div class="inputs2">
                 <input id="hoursMined" name="hoursMined" type="number" placeholder="Hours Mining" step="0.01"
@@ -55,7 +61,8 @@
             </div>
             <div>
                 <button class="reset" type="reset" onclick="resetAll()">RESET</button>
-                <button class="submit" onclick="finalResults()">CALCULATE</button>
+                <button class="submit" type="submit" onclick="finalResults()">CALCULATE</button>
+                <!--                <button class="savetodb" type="button" onclick="minerInfo()">SAVE DB</button>-->
             </div>
         </form>
         <div class="footer">
@@ -63,5 +70,4 @@
         </div>
     </div>
 </div>
-
 }
