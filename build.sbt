@@ -1,7 +1,7 @@
 lazy val commonSettings = Seq(
     name := """ergo-miner-calc""",
     organization := "portugal.ergo",
-    version := "0.2.4-BETA",
+    version := "0.2.4",
     scalaVersion := "2.13.8"
 )
 
